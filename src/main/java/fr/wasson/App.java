@@ -10,18 +10,19 @@ public class App {
         Random generateur = new Random();
         Scanner scanner = new Scanner(System.in);
 
-        int nbCases = 20;
-        int nbLances = 5;
+        final int NBCASES = 20;
+        final int NBLANCES = 5;
+        int nbParties = 1;
         int lancer;
         int reste;
         int numCase;
 
         do {
             lancer = 0;
-            reste = nbCases;
+            reste = NBCASES;
             numCase = 0;
 
-            for (int i = 1; i <= nbLances; i++) {
+            for (int i = 1; i <= NBLANCES; i++) {
                 lancer = generateur.nextInt(6) + 1;
                 reste = reste - lancer;
                 numCase = numCase + lancer;
@@ -30,9 +31,9 @@ public class App {
             };
 
             if (numCase == 20) {
-                System.out.println("Vous avez gagné !");
+                System.out.println("Vous avez gagné !\nVous avez fait " + nbParties++ + " parties.");
             } else {
-                System.out.println("Vous avez perdu !");
+                System.out.println("Vous avez perdu !\nVous avez fait " + nbParties++ + " parties.");
             }
 
         } while (numCase != 20);
