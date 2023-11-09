@@ -10,15 +10,13 @@ public class App {
         Random generateur = new Random();
         Scanner scanner = new Scanner(System.in);
 
-        int nbCases;
-        int nbLances;
+        int nbCases = 20;
+        int nbLances = 5;
         int lancer;
         int reste;
         int numCase;
 
         do {
-            nbCases = 20;
-            nbLances = 5;
             lancer = 0;
             reste = nbCases;
             numCase = 0;
