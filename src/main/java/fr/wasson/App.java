@@ -14,26 +14,28 @@ public class App {
         final int NBLANCES = 5;
         int nbParties = 1;
         int lancer;
-        int reste;
-        int numCase;
+        int reste = NBCASES;
+        int numCase = 0;
+        int index = 1;
 
         do {
             lancer = 0;
-            reste = NBCASES;
-            numCase = 0;
 
-            for (int i = 1; i <= NBLANCES; i++) {
-                lancer = generateur.nextInt(6) + 1;
-                reste = reste - lancer;
-                numCase = numCase + lancer;
-                System.out.print("Lancer " + i + " : vous avez fait " + lancer + ". Vous êtes sur la case " + numCase + " (encore " + reste + " cases)");
-                scanner.nextLine();
-            };
+            lancer = generateur.nextInt(6) + 1;
+            reste = reste - lancer;
+            numCase = numCase + lancer;
+
+            if (numCase > 20) {
+                int tmp = numCase - NBCASES;
+                numCase = numCase - tmp;
+                reste = tmp;
+            }
+
+            System.out.print("Lancer " + index++ + " : vous avez fait " + lancer + ". Vous êtes sur la case " + numCase + " (encore " + reste + " cases)");
+            scanner.nextLine();
 
             if (numCase == 20) {
                 System.out.println("Vous avez gagné !\nVous avez fait " + nbParties++ + " parties.");
-            } else {
-                System.out.println("Vous avez perdu !\nVous avez fait " + nbParties++ + " parties.");
             }
 
         } while (numCase != 20);
